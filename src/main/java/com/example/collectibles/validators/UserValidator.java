@@ -19,8 +19,8 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "email", "email.empty");
         ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
         ValidationUtils.rejectIfEmpty(errors, "gender", "gender.empty");
+        ValidationUtils.rejectIfEmpty(errors, "dateOfBirth", "dateOfBirth.empty");
         ValidationUtils.rejectIfEmpty(errors, "favoriteCollection", "favoriteCollection.empty");
-        
     }
 
 }

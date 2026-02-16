@@ -2,6 +2,7 @@ package com.example.collectibles.controllers;
 
 import com.example.collectibles.validators.UserValidator;
 import com.example.collectibles.beans.User;
+import com.example.collectibles.dao.UserRepository;
 
 import jakarta.validation.Valid;
 import org.springframework.ui.Model;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private final UserValidator userValidator;
+    private final UserRepository userRepository;
 
-    public UserController(UserValidator userValidator) {
+    public UserController(UserValidator userValidator, UserRepository userRepository) {
         this.userValidator = userValidator;
+        this.userRepository = userRepository;
     }
 
     @InitBinder
@@ -35,6 +38,14 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model){
+        
+        if (result.hasErrors()) {
+            return "register-user";
+        }
+        User savedUser = userRepository.save(user);
+        if (savedUser != null) {
+            model.addAttribute("userSaved", true);
+        }
         return "register-user";
     }
 
