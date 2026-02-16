@@ -18,24 +18,24 @@ public class User {
     @Id
     private Long id;
 
-    @NotEmpty(message = "Email is required")
-    @Email(message = "Invalid email format")
+    // @NotEmpty(message = "Email is required")
+    // @Email(message = "Invalid email format")
     private String email;
 
-    @NotEmpty(message = "Name is required")
-    @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
+    // @NotEmpty(message = "Name is required")
+    // @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
     private String name;
 
-    @NotEmpty(message= "Gender is required")
+    // @NotEmpty(message= "Gender is required")
     private String gender;
     private String message;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotNull(message = "Date of Birth is required")
-    @Past(message = "Date of Birth must be in the past")
+    // @NotNull(message = "Date of Birth is required")
+    // @Past(message = "Date of Birth must be in the past")
     private Date dateOfBirth;
     private boolean newsLetter;
-    @NotEmpty(message = "Favorite Collection is required") 
+    // @NotEmpty(message = "Favorite Collection is required") 
     private String favoriteCollection;
 
     public Long getId() {
