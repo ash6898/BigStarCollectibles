@@ -14,4 +14,11 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :searchString, '%'))")
     List<Product> searchByName(@Param("searchString") String keyword);
+
+    @Query("SELECT p FROM Product p WHERE p.id = :id")
+    List<Product> searchById(@Param("id") String keyword);
+    
+    @Override
+    Iterable<Product> findAll();
+
 }
