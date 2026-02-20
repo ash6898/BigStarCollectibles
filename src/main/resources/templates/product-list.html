@@ -55,59 +55,17 @@
 							<h2 id="label-filter-by">Filter by:</h2>
 							<a role="button" tabindex="0">Clear filters</a>
 						</header>
+						<form th:method="post" th:action="@{/filterProducts}" th:object="${filter}">
 						<details>
 							<summary>Product type</summary>
 							<ul>
-								<li>
-									<input  id="filter-type-all" type="checkbox">
-									<label for="filter-type-all">All <span class="visually-hidden">product types</span></label>
-								</li>
-								<li>
-									<input  id="filter-type-aprons" type="checkbox">
-									<label for="filter-type-aprons">Aprons</label>
-								</li>
-								<li>
-									<input  id="filter-type-art" type="checkbox">
-									<label for="filter-type-art">Framed Art</label>
-								</li>
-								<li>
-									<input  id="filter-type-hats" type="checkbox">
-									<label for="filter-type-hats">Hats</label>
-								</li>
-								<li>
-									<input  id="filter-type-magnets" type="checkbox">
-									<label for="filter-type-magnets">Magnets</label>
-								</li>
-								<li>
-									<input  id="filter-type-mugs" type="checkbox">
-									<label for="filter-type-mugs">Mugs</label>
-								</li>
-								<li>
-									<input  id="filter-type-notebooks" type="checkbox">
-									<label for="filter-type-notebooks">Notebooks</label>
-								</li>
-								<li>
-									<input  id="filter-type-posters" type="checkbox">
-									<label for="filter-type-posters">Posters</label>
-								</li>
-								<li>
-									<input  id="filter-type-pillows" type="checkbox">
-									<label for="filter-type-pillows">Pillows</label>
-								</li>
-								<li>
-									<input  id="filter-type-tote" type="checkbox">
-									<label for="filter-type-tote">Tote Bags</label>
-								</li>
-								<li>
-									<input  id="filter-type-cards" type="checkbox">
-									<label for="filter-type-cards">Trading Cards</label>
-								</li>
-								<li>
-									<input  id="filter-type-tshirts" type="checkbox">
-									<label for="filter-type-tshirts">T-shirts</label>
+								<li th:each="type : ${filter.productType}">
+									<input  th:id="${type}" type="checkbox" th:value="${type}" th:field="*{selectedType}" th:onchange="this.form.submit()">
+									<label th:for="${type}" th:text="${type}"><span class="visually-hidden"></span></label>
 								</li>
 							</ul>
 						</details>
+						</form>
 						<details>
 							<summary>Price</summary>
 							<ul>
