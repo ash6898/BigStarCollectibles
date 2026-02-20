@@ -2,8 +2,11 @@ package com.example.collectibles.beans;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import tools.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.PropertyNamingStrategies;
 
 @Entity
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Product {
 
     @Id
